@@ -12,9 +12,17 @@ function test_select_all_from_empty_dataset() {
 }
 
 
-function test_unknown_command() {
+function test_unknown_command_update() {
     local input='UPDATE;'
     local expected_output="unknown command UPDATE"
+
+    _run_test "$input" "$expected_output"
+}
+
+
+function test_unknown_command_foobar() {
+    local input='FOOBAR baz querty;'
+    local expected_output="unknown command FOOBAR"
 
     _run_test "$input" "$expected_output"
 }
@@ -76,14 +84,26 @@ name: "John"'
     _run_test "$input" "$expected_output"
 }
 
+function test_select_col_with_conditions_no_results() {
+    local input='INSERT name: "Jane" surname: "Doe";
+INSERT name: "Jessica" surname: "Fletcher";
+INSERT name: "John" surname: "Doe";
+SELECT name WHERE surname: "Not Present";'
+    local expected_output="empty"
+
+    _run_test "$input" "$expected_output"
+}
+
 
 test_select_all_from_empty_dataset
-test_unknown_command
+test_unknown_command_update
+test_unknown_command_foobar
 test_select_all_one_row_without_conditions
 test_select_all_two_rows_without_conditions
 test_select_all_with_conditions
 test_select_col_without_conditions
 test_select_col_with_conditions
+test_select_col_with_conditions_no_results
 
 _report_test_results
 exit 0
