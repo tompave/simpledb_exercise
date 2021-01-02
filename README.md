@@ -41,3 +41,35 @@ export PROGRAM=./bin/yourprogram
 test/black_box.bash
 ```
 
+## Example PROGRAM config
+
+### Executable Files
+
+If you code can compile or otherwise produce an executable file:
+
+```shell
+export PROGRAM=./bin/yourprogram
+```
+
+### Interpreters
+
+If you're using an interpreted language, e.g. Ruby or Python, you could do this:
+
+```shell
+export PROGRAM='ruby yourprogram.rb'
+```
+
+Or add a [shebang](https://en.wikipedia.org/wiki/Shebang_(Unix)) and make the source script executable:
+
+```shell
+chmod 755 yourprogram.rb
+export PROGRAM=./yourprogram.rb
+```
+
+### Java
+
+This works:
+
+```shell
+export PROGRAM='java yourprogram.java'
+```
