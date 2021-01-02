@@ -93,14 +93,18 @@ if [[ -z $PROGRAM ]]; then
     return 1
 fi;
 
-if [[ ! -e $PROGRAM ]]; then
-    _fail "\$PROGRAM is set to '$PROGRAM', but no file exists at that path."
-    return 1
-fi;
-
-if [[ ! -x $PROGRAM ]]; then
-    _fail "\$PROGRAM is set to '$PROGRAM', but the file is not executable. Fix it with 'chmod 755 $PROGRAM'."
-    return 1
-fi;
+# These two make sense for programs that exist as a single file. However, they
+# get in the way in other situations, for example: `export PROGRAM='java mysolution.java'`.
+#
+#
+# if [[ ! -e $PROGRAM ]]; then
+#     _fail "\$PROGRAM is set to '$PROGRAM', but no file exists at that path."
+#     return 1
+# fi;
+#
+# if [[ ! -x $PROGRAM ]]; then
+#     _fail "\$PROGRAM is set to '$PROGRAM', but the file is not executable. Fix it with 'chmod 755 $PROGRAM'."
+#     return 1
+# fi;
 
 # -------------------------------------------------------------------
