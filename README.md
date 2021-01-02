@@ -14,7 +14,7 @@ The only requirement for your program is to make the tests pass.
 
 We can infer that your program should receive a string as input (a shell argument) when it's invoked, and that it should emit some other string as standard output.
 
-Your program is expected to behave as an in-memory database that supports a simple SQL-like syntax. It doesn't need to persist its data all state can be lost on termination.
+Your program is expected to behave as an in-memory database that supports a simple SQL-like syntax. It doesn't need to persist its data, and all state can be lost on termination.
 
 ## Setup
 
